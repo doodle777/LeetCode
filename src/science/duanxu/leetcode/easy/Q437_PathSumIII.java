@@ -3,8 +3,7 @@ package science.duanxu.leetcode.easy;
 import science.duanxu.leetcode.datastruct.TreeNode;
 import sun.reflect.generics.tree.Tree;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 437. Path Sum III
@@ -13,35 +12,27 @@ import java.util.List;
  * MAY THE FORCE BE WITH YOU.
  */
 public class Q437_PathSumIII {
-    private int count;
-    private int sum;
-
-    private void travelTree(TreeNode root, int s) {
-        if (root == null) {
-            return;
-        }
-
-        if(root.left == null && root.right == null) {
-            if(s + root.val == sum) {
-                count++;
-                return;
-            }
-        }
-
-        if (root.left != null) {
-            travelTree(root.left, s + root.val);
-        }
-
-        if (root.right != null) {
-            travelTree(root.right, s + root.val);
-        }
+    public int pathSum(TreeNode root, int sum) {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);  //Default sum = 0 has one count
+        return backtrack(root, 0, sum, map);
     }
 
-    public int pathSum(TreeNode root, int sum) {
-        this.count = 0;
-        this.sum = sum;
+    //BackTrack one pass
+    private int backtrack(TreeNode root, int sum, int target, Map<Integer, Integer> map){
+        if(root == null)
+            return 0;
+        sum += root.val;
 
-        travelTree(root, 0);
-        return count;
+        //See if there is a subarray sum equals to target
+        int res = map.getOrDefault(sum - target, 0);
+        map.put(sum, map.getOrDefault(sum, 0)+1);
+
+        //Extend to left and right child
+        res += backtrack(root.left, sum, target, map) + backtrack(root.right, sum, target, map);
+
+        //Remove the current node so it wont affect other path
+        map.put(sum, map.get(sum)-1);
+        return res;
     }
 }
