@@ -1,7 +1,6 @@
 package science.duanxu.leetcode.medium;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 503. Next Greater Element II
@@ -11,6 +10,25 @@ import java.util.Map;
  */
 public class Q503_NextGreaterElementII {
     public int[] nextGreaterElements(int[] nums) {
-        return null;
+        if (nums == null || nums.length == 0) {
+            return nums;
+        }
+
+        int[] result = new int[nums.length];
+        Deque<Integer> stack = new ArrayDeque<Integer>();
+
+        for (int i = 0; i < result.length; i++) {
+            result[i] = -1;
+        }
+        for (int i = 0; i < result.length * 2; i++) {
+            int index = i % result.length;
+            while (!stack.isEmpty() && nums[index] > nums[stack.peek()]) {
+                result[stack.pop()] = nums[index];
+            }
+
+            stack.push(index);
+        }
+
+        return result;
     }
 }

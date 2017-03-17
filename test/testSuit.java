@@ -5,11 +5,13 @@ import science.duanxu.leetcode.easy.Q441_ArrangingCoins;
 import science.duanxu.leetcode.easy.Q475_Heaters;
 import science.duanxu.leetcode.medium.Q406_QueueReconstructionByHeight;
 import science.duanxu.leetcode.medium.Q442_FindAllDuplicatesInAnArray;
+import science.duanxu.leetcode.medium.Q498_DiagonalTraverse;
+import science.duanxu.leetcode.medium.Q503_NextGreaterElementII;
 
 public class testSuit {
     public static void main(String[] args) {
-        int[] nums = {10,2,5,10,9,1,1,4,3,7};
-        Q442_FindAllDuplicatesInAnArray test =  new Q442_FindAllDuplicatesInAnArray();
-        test.findDuplicates(nums);
+        int[][] table = {{1,2,3},{4,5,6},{7,8,9}};
+        Q498_DiagonalTraverse test = new Q498_DiagonalTraverse();
+        test.findDiagonalOrder(table);
     }
 }
