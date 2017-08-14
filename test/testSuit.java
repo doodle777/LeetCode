@@ -3,15 +3,12 @@ import science.duanxu.leetcode.easy.Q400_NthDigit;
 import science.duanxu.leetcode.easy.Q437_PathSumIII;
 import science.duanxu.leetcode.easy.Q441_ArrangingCoins;
 import science.duanxu.leetcode.easy.Q475_Heaters;
-import science.duanxu.leetcode.medium.Q406_QueueReconstructionByHeight;
-import science.duanxu.leetcode.medium.Q442_FindAllDuplicatesInAnArray;
-import science.duanxu.leetcode.medium.Q498_DiagonalTraverse;
-import science.duanxu.leetcode.medium.Q503_NextGreaterElementII;
+import science.duanxu.leetcode.medium.*;
 
 public class testSuit {
     public static void main(String[] args) {
-        int[][] table = {{1,2,3},{4,5,6},{7,8,9}};
-        Q498_DiagonalTraverse test = new Q498_DiagonalTraverse();
-        test.findDiagonalOrder(table);
+        String[] paths = {"root/a 1.txt(abcd) 2.txt(efgh)", "root/c 3.txt(abcd)", "root/c/d 4.txt(efgh)", "root 4.txt(efgh)"};
+        Q609_FindDuplicateFileInSystem test = new Q609_FindDuplicateFileInSystem();
+        test.findDuplicate(paths);
     }
 }

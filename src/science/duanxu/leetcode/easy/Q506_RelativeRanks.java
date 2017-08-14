@@ -1,7 +1,5 @@
 package science.duanxu.leetcode.easy;
 
-import com.sun.deploy.util.ArrayUtil;
-
 import java.util.*;
 
 /**
